@@ -80,7 +80,7 @@ let _ =
     )
 
 let start ppf =
-  Format.fprintf ppf "        Welcome to TryOCaml (v. %s)@.@." Sys.ocaml_version;
+  Format.fprintf ppf "        Welcome to Xen Control Shell (v. %s)@.@." Sys.ocaml_version;
   Toploop.initialize_toplevel_env ();
   Toploop.input_name := "";
   List.iter (fun s ->
@@ -102,6 +102,14 @@ let start ppf =
     "#install_printer Topnum.print_num";
     "#install_printer Toploop.print_exn";
     "open Topnum";
+
+(* For Xcp/storage *)
+    "module RPC = struct include Lwt let rpc = Rpc_client_js.do_rpc ~url:\"/\" end";
+    "module SR = Storage.SR_client(RPC)";
+    "module Query = Storage.Query_client(RPC)";
+    "module VDI = Storage.VDI_client(RPC)";
+    "let dbg = \"toplevel\"";
+
   ];
   ()
 
