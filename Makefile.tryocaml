@@ -70,7 +70,7 @@ STDLIB_MODULES=\
   stringLabels \
   weak
 
-TOPLEVEL_MODULES=$(STDLIB_MODULES) n regexp tutorial outcometree topdirs toploop toplevel clflags n big_int num topnum xmlm lwt js rpc rpc_client_js xmlHttpRequest xmlrpc storage
+TOPLEVEL_MODULES=$(STDLIB_MODULES) n regexp tutorial outcometree topdirs toploop toplevel clflags n big_int num topnum xmlm lwt js rpc rpc_client_js xcp xmlHttpRequest xmlrpc storage
 
 TOPLEVEL_CMIS=$(TOPLEVEL_DIR)/toplevel.cmi
 TOPLEVEL_CMOS=$(TOPLEVEL_DIR)/toplevel.cmo $(TOPLEVEL_DIR)/topmain.cmo
