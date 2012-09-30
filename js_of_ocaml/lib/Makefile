@@ -1,4 +1,4 @@
-MLOBJS= js.cmo dom.cmo typed_array.cmo dom_html.cmo file.cmo dom_events.cmo lwt_js.cmo firebug.cmo regexp.cmo CSS.cmo url.cmo form.cmo xmlHttpRequest.cmo event_arrows.cmo lwt_js_events.cmo json.cmo webGL.cmo
+MLOBJS= js.cmo dom.cmo typed_array.cmo dom_html.cmo file.cmo dom_events.cmo lwt_js.cmo firebug.cmo regexp.cmo CSS.cmo url.cmo form.cmo xmlHttpRequest.cmo event_arrows.cmo lwt_js_events.cmo json.cmo webGL.cmo rpc_client_js.cmo
 MLINTFS= $(MLOBJS:.cmo=.mli)
 COBJS= stubs$(OBJEXT)
 OBJS=$(MLOBJS) $(COBJS)
@@ -36,7 +36,7 @@ syntax/pa_deriving_Json.cmo: syntax/pa_deriving_Json.ml
 	ocamlfind ocamlc -package deriving-ocsigen.syntax,camlp4.quotations.o -syntax camlp4o -c $<
 
 %.cmo: %.ml syntax/pa_js.cmo
-	ocamlfind ocamlc -pp "camlp4o syntax/pa_js.cmo" -package lwt -c -g $<
+	ocamlfind ocamlc -pp "camlp4o syntax/pa_js.cmo" -package lwt -package rpc -c -g $<
 
 %.cmi: %.mli
 	ocamlfind ocamlc -package lwt -I deriving_json -c $<
